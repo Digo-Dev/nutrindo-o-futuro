@@ -22,11 +22,12 @@ def saidas():
 def estoque():
     return render_template('estoque.html')
 
-"""
+
 @app.route('/<string:nome>')
 def error(nome):
     return f'<h1>A página ("{nome}" não existe)</h1>'
-"""
+
+
 
 if __name__ == "__main__":
     app.run(debug=True)

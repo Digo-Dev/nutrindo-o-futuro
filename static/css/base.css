@@ -1,6 +1,7 @@
 * {
     margin: 0;
     padding: 0;
+    color: #ffffff;
 }
 
 a {
@@ -28,10 +29,6 @@ nav {
     height: 8vh;
 }
 
-main {
-    background: url('../imagens/img_bg.png') no-repeat center center;
-}
-
 .nav-list{
     list-style: none;
     display: flex;
@@ -40,4 +37,48 @@ main {
 .nav-list li{
     letter-spacing: 3px;
     margin-left: 32px;
+}
+
+.mobile-menu{
+    cursor: pointer;
+    display: none;
+}
+
+.mobile-menu div {
+    width: 32px;
+    height: 2px;
+    background: #ffffff;
+    margin: 8px;
+}
+
+body {
+    background-color: black;
+    
+}
+
+main{
+    background: url(/static/imagens/img_bg.png) no-repeat center center;
+    opacity: 0.1;
+    height: 90vh;
+}  
+
+
+p, h1{
+    text-align: center;
+    margin-bottom: 10%;
+}
+
+.buttons p{
+    padding: 100px;
+    color: black;
+}
+
+table {
+    margin: auto;
+    text-align: center;
+    width: 80vw;
+}
+
+footer {
+    text-align: center;
 }

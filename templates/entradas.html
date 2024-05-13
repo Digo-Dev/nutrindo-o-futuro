@@ -2,6 +2,25 @@
 
     {% block conteudo %}
 
-    <h1>conteudo entradas</h1>
+    <h1>Entradas</h1>
+
+    <form>
+        <p>
+            Cód: <input type="text" name="cod-prod" id="cod-prod" size="3px"> 
+            produto: <input type="text" name="nome-produto" id="nome-produto">
+        </p>
+
+        <p>
+            Qtd: <input type="text" name="qtd-entrada" id="qtd-entrada">
+            Lote: <input type="text" name="lote-entrada" id="lote-entrada">
+            Valiade Lote <input type="text" name="venc-lot-entrada" id="venc-lot-entrada">
+        </p>
+
+        <p class="buttons">
+            <button type="submit">Concluir</button>
+            <button type="button">Voltar/Cancelar</button>
+        </p>
+
+    </form>
 
     {% endblock %}
