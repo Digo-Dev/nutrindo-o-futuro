@@ -1,0 +1,29 @@
+<form class="c-form" action="{{ url_for('produto.inserir_produto') }}" method="POST">
+    <div>
+        <label class="form-label">Produto</label>
+        <input type='text' class="form-control" name="Produto">
+    </div>
+    
+    <div>
+        <label class="form-label">Qtd</label>
+        <input type="number" class="form-control" name="Qtd">
+    </div>
+    
+    <div>
+        <label class="form-label">Peso</label>
+        <input type="number" class="form-control" name="Peso">
+    </div>
+    
+    <div>
+        <label class="form-label">Lote:</label>
+        <input type='text' class="form-control" name="Lote">
+    </div>
+        <label class="form-label">Validade Lote</label>
+        <input type='date' class="form-control" name="Validade">
+
+    <p class="buttons">
+        <button type="submit">Cadastrar</button>
+        <button type="button">Voltar/Cancelar</button>
+    </p>
+
+</form>

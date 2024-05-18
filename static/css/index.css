@@ -52,8 +52,7 @@ nav {
 }
 
 body {
-    background-color: black;
-    
+    background: linear-gradient( to bottom, rgb(4, 68, 52), rgb(0, 0, 0) );  
 }
 
 main{

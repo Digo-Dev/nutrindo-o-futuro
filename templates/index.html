@@ -1,7 +1,45 @@
-{% extends 'base.html' %}
-
-    {% block conteudo %}
-
-    <h1>conteudo principal</h1>
-
-    {% endblock %}
+<!DOCTYPE html>
+<html lang="pt-Br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='imagens/favicon.ico')}}" type="image/x-icon">
+    <title>Nutrindo o futuro</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css')}}">
+</head>
+    
+<body>
+    <script src=" {{url_for('static', filename='JS/cru.js') }}"></script>
+    <header>
+        <nav>
+            <div class="mobile-menu">
+                <div class="line1"></div>
+                <div class="line2"></div>
+                <div class="line3"></div>
+            </div>
+            <ul class="nav-list">
+                <li><a href="/">Home</a></li>
+                <li><a href="entradas.html">Entrada</a></li>
+                <li><a href="saidas.html">Saída</a></li>
+                <li><a href="estoque.html">Estoque</a></li>
+                <li><a href="cadastro.html">Cadastro</a></li>
+                <li><a href="sair">Sair</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <main>
+      
+    <!--formulário add produto-->
+    <div c-container="{{ url_for('produto.form_produto') }}"></div>
+    
+    <!--Lista de produtos-->
+    <div c-container="{{ url_for('produto.listar_produto') }}"></div>
+    
+    </main>
+    <footer class="footer">
+       <h6>Criado para Univesp</h6> 
+    </footer>
+    
+</body>
+</html>

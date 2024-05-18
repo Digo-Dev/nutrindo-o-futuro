@@ -1,0 +1,37 @@
+<h1>Estoque</h1>
+
+<table >
+    <thead>
+        <tr>
+            <th scope="col">Cód</th>
+            <th scope="col">Produto</th>
+            <th scope="col">Unidade</th>
+            <th scope="col">Peso/Un(kg)</th>
+            <th scope="col">Qtd</th>
+            <th scope="col">Lote</th>
+            <th scope="col">Validade</th>
+            <th scope="col">Ações</th>
+        </tr>
+    </thead>
+    
+    <tbody>
+
+        {% for produto in produtos %}
+            <tr>
+                <td scope="row">{{ produto.id }}</td>
+                <td>{{ produto.Produto }}</td>
+                <td>{{ produto.Unidade }}</td>
+                <td>{{ produto.Peso }}</td>
+                <td>{{ produto.Qtd }}</td>
+                <td>{{ produto.Lote }}</td>
+                <td>{{ produto.Validade }}</td>
+                <td>
+                    <button>Editar</button>
+                    <button>Deletar</button>
+                </td>
+            </tr>
+        {% endfor %}
+
+    </tbody>
+    
+</table>
