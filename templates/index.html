@@ -6,10 +6,11 @@
     <link rel="shortcut icon" href="{{ url_for('static', filename='imagens/favicon.ico')}}" type="image/x-icon">
     <title>Nutrindo o futuro</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css')}}">
+    <script src="{{ url_for('static', filename='js/cru.js') }}"></script>
 </head>
     
 <body>
-    <script src=" {{url_for('static', filename='JS/cru.js') }}"></script>
+    
     <header>
         <nav>
             <div class="mobile-menu">
@@ -28,15 +29,18 @@
         </nav>
     </header>
     
-    <main>
-      
+    
+    
+    
+    <h1>text</h1>
     <!--formulário add produto-->
     <div c-container="{{ url_for('produto.form_produto') }}"></div>
     
     <!--Lista de produtos-->
     <div c-container="{{ url_for('produto.listar_produto') }}"></div>
+
     
-    </main>
+    
     <footer class="footer">
        <h6>Criado para Univesp</h6> 
     </footer>

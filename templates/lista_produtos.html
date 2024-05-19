@@ -1,6 +1,6 @@
 <h1>Estoque</h1>
 
-<table >
+<table class="table">
     <thead>
         <tr>
             <th scope="col">Cód</th>
@@ -14,22 +14,10 @@
         </tr>
     </thead>
     
-    <tbody>
+    <tbody id="lista-produtos">
 
         {% for produto in produtos %}
-            <tr>
-                <td scope="row">{{ produto.id }}</td>
-                <td>{{ produto.Produto }}</td>
-                <td>{{ produto.Unidade }}</td>
-                <td>{{ produto.Peso }}</td>
-                <td>{{ produto.Qtd }}</td>
-                <td>{{ produto.Lote }}</td>
-                <td>{{ produto.Validade }}</td>
-                <td>
-                    <button>Editar</button>
-                    <button>Deletar</button>
-                </td>
-            </tr>
+            {% include 'item_produto.html' %}
         {% endfor %}
 
     </tbody>
