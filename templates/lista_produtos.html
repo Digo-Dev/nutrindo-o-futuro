@@ -1,6 +1,6 @@
 <h1>Estoque</h1>
 
-<table class="table">
+<table class="table" t-reload="true">
     <thead>
         <tr>
             <th scope="col">Cód</th>
@@ -15,7 +15,7 @@
     </thead>
     
     <tbody id="lista-produtos">
-
+      
         {% for produto in produtos %}
             {% include 'item_produto.html' %}
         {% endfor %}

@@ -1,38 +1,18 @@
 from flask import Flask, render_template
+from routes.login import login_route
 from routes.home import home_route
 from routes.produto import produto_route
+from database.conectionDB import conectar
 
 app = Flask(__name__)
+app.config['SECRET_KEY'] ='nopass'
 
-app.register_blueprint(home_route)
+app.register_blueprint(login_route)
+app.register_blueprint(home_route, url_prefix='/home')
 app.register_blueprint(produto_route, url_prefix='/produto')
 
-"""
-@app.route('/')
-def Raiz():
-    return render_template('index.html')
-
-@app.route('/cadastro.html')
-def cadastra():
-    return render_template('cadastro.html')
-
-@app.route('/entradas.html')
-def entradas():
-    return render_template('entradas.html')
-
-@app.route('/saidas.html')
-def saidas():
-    return render_template('saidas.html')
-
-@app.route('/estoque.html')
-def estoque():
-    return render_template('estoque.html')
-
-
-@app.route('/<string:nome>')
-def error(nome):
-    return f'<h1>A página ("{nome}" não existe)</h1>'
-"""
+logado = False
+conectar()
 
 if __name__ == "__main__":
     app.run(debug=True)

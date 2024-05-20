@@ -1,18 +1,29 @@
 from flask import Blueprint, render_template, request
-from database.Produtos import PRODUTOS
+from database.conectionDB import conectar, conexao
 
 produto_route = Blueprint('produto', __name__)
 
 """Lista os produtos"""
 @produto_route.route('/')  
 def listar_produto():
-    return render_template('lista_produtos.html', produtos=PRODUTOS)
+    global logado
 
+    conectar()
+    cont = 0
+    if conexao.is_connected():
+        cursor = conexao.cursor()
+        cursor.execute('select * from produtos;')
+        produtosBD = cursor.fetchall()
+        produtosBD = list(produtosBD)
+        return render_template('lista_produtos.html', produtos=produtosBD)
+    else:
+        return "Server offline"
+    
 """Insere o produto no servidor."""
 @produto_route.route('/', methods=['POST'])
 def inserir_produto():
     
-    data = requests.json
+    data = request.form.get()
 
     novo_produto = {
         "id" : len(PRODUTOS)+1,

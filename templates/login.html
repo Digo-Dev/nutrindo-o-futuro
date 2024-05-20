@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,24 +7,22 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-    <div class="login-container">
-        <h2>Login</h2>
-        <form method="POST">
-            <label for="username">Username:</label>
-            <input type="text" id="username" name="username" required>
-            <label for="password">Password:</label>
-            <input type="password" id="password" name="password" required>
-            <button type="submit">Login</button>
-        </form>
-        {% with messages = get_flashed_messages() %}
-            {% if messages %}
-                <ul>
-                {% for message in messages %}
-                    <li>{{ message }}</li>
-                {% endfor %}
-                </ul>
-            {% endif %}
-        {% endwith %}
-    </div>
+    <h1>Nutrindo o futuro</h1>
+
+    {% set menssagem = get_flashed_messages() %}
+    {% if menssagem %}
+        <div class="flash_alerta">
+            {{menssagem[0]}}
+        </div>
+    {% endif %}
+    
+    <form action="/autenticar" method="post" c-reaload-conteiner="true">
+        <label for="usuario-lb">Usuario</label>
+        <input type="text" name="usuario">
+        <label for="senha-lb">Senha</label>
+        <input type="password" name="senha">
+        <button type="submit">Logar</button>
+    </form>
+
 </body>
 </html>

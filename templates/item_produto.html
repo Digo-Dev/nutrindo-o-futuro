@@ -1,13 +1,13 @@
 <tr>
-    <td scope="row">{{ produto.id }}</td>
-    <td>{{ produto.Produto }}</td>
-    <td>{{ produto.Unidade }}</td>
-    <td>{{ produto.Peso }}</td>
-    <td>{{ produto.Qtd }}</td>
-    <td>{{ produto.Lote }}</td>
-    <td>{{ produto.Validade }}</td>
+    <td scope="row">{{ produto[0] }}</td>
+    <td>{{ produto[1] }}</td>
+    <td>{{ produto[2] }}</td>
+    <td>{{ produto[3] }}</td>
+    <td>{{ produto[4] }}</td>
+    <td>{{ produto[5] }}</td>
+    <td>{{ produto[6] }}</td>
     <td>
         <button>Editar</button>
-        <button class="btn-danger" c-delete="{{ url_for('produto.deletar_produto', produto_id=produto.id) }}">Deletar</button>
+        <button>Deletar</button>
     </td>
 </tr>
