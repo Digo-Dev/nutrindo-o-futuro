@@ -11,7 +11,7 @@
     
 <body>
     
-    <header>
+    <header class="cabecalho">
         <nav>
             <div class="mobile-menu">
                 <div class="line1"></div>
@@ -19,30 +19,27 @@
                 <div class="line3"></div>
             </div>
             <ul class="nav-list">
-                <li><a href="/">Home</a></li>
-                <li><a href="entradas.html">Entrada</a></li>
-                <li><a href="saidas.html">Saída</a></li>
-                <li><a href="estoque.html">Estoque</a></li>
-                <li><a href="cadastro.html">Cadastro</a></li>
+                <li><a href="{{ url_for('home.home') }}">Home</a></li>
+                <li><a href="{{ url_for('produto.inserir_produto') }}">Entrada</a></li>
+                <li><a href="form_produto.html">Saída</a></li>
+                <li><a href="{{ url_for('produto.listar_produto') }}">Estoque</a></li>
+                <li><a href="{{ url_for('produto.form_produto') }}">Cadastro</a></li>
                 <li><a href="sair">Sair</a></li>
             </ul>
         </nav>
     </header>
-    
-    
-    
-    
-    <h1>text</h1>
-    <!--formulário add produto-->
-    <div c-container="{{ url_for('produto.form_produto') }}"></div>
-    
-    <!--Lista de produtos-->
-    <div c-container="{{ url_for('produto.listar_produto') }}"></div>
+      
+   <main>
+        <div class="conteudo">
+            {% block conteudo %}
 
-    
+            {% endblock %}
+        </div>
+        
+   </main>
     
     <footer class="footer">
-       <h6>Criado para Univesp</h6> 
+        <h6>Criado para Univesp</h6> 
     </footer>
     
 </body>

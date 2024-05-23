@@ -1,25 +1,29 @@
-<h1>Estoque</h1>
+{% extends 'index.html' %}
+    {% block conteudo %}
 
-<table class="table" t-reload="true">
-    <thead>
-        <tr>
-            <th scope="col">Cód</th>
-            <th scope="col">Produto</th>
-            <th scope="col">Unidade</th>
-            <th scope="col">Peso/Un(kg)</th>
-            <th scope="col">Qtd</th>
-            <th scope="col">Lote</th>
-            <th scope="col">Validade</th>
-            <th scope="col">Ações</th>
-        </tr>
-    </thead>
-    
-    <tbody id="lista-produtos">
-      
-        {% for produto in produtos %}
-            {% include 'item_produto.html' %}
-        {% endfor %}
+        <h1>Estoque</h1>
 
-    </tbody>
-    
-</table>
+        <table class="table" t-reload="true">
+            <thead>
+                <tr>
+                    <th scope="col">Cód</th>
+                    <th scope="col">Produto</th>
+                    <th scope="col">Unidade</th>
+                    <th scope="col">Peso/Un(kg)</th>
+                    <th scope="col">Qtd</th>
+                    <th scope="col">Lote</th>
+                    <th scope="col">Validade</th>
+                    <th scope="col">Ações</th>
+                </tr>
+            </thead>
+            
+            <tbody id="lista-produtos">
+            
+                {% for produto in produtos %}
+                    {% include 'item_produto.html' %}
+                {% endfor %}
+
+            </tbody>
+            
+        </table>
+    {% endblock %}

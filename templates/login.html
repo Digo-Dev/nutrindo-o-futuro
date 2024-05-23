@@ -3,26 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}"/>
+    <link rel="shortcut icon" href="{{ url_for('static', filename='imagens/favicon.ico')}}" type="image/x-icon">
     <title>Login</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-    <h1>Nutrindo o futuro</h1>
+    
+    <h1 class="login-container">Login</h1>
 
+   
+    <div>
+        <form action="/autenticar" method="post" c-reaload-conteiner="true" class="login-container">
+            <label for="usuario-lb">Usuário</label>
+            <input type="text" name="usuario" placeholder="Email">
+            <label for="senha-lb">Senha</label>
+            <input type="password" name="senha">
+            <button type="submit">Logar</button>
+        </form>
+    </div>
+    
     {% set menssagem = get_flashed_messages() %}
     {% if menssagem %}
         <div class="flash_alerta">
             {{menssagem[0]}}
         </div>
     {% endif %}
-    
-    <form action="/autenticar" method="post" c-reaload-conteiner="true">
-        <label for="usuario-lb">Usuario</label>
-        <input type="text" name="usuario">
-        <label for="senha-lb">Senha</label>
-        <input type="password" name="senha">
-        <button type="submit">Logar</button>
-    </form>
 
 </body>
 </html>

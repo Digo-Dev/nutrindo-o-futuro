@@ -53,14 +53,29 @@ nav {
 
 body {
     background: linear-gradient( to bottom, rgb(4, 68, 52), rgb(0, 0, 0) );
+    
 }
 
-main{
-    background: linear-gradient( to bottom, rgb(4, 68, 52), rgb(0, 0, 0) );
-    background: url(/static/imagens/img_bg.png) no-repeat center center;
-    opacity: 0.1;
+main{  
     height: 90vh;
+    display: grid;
+    place-items: center;
+    position: relative;
 }  
+
+main::before{
+    background-image: url('/static/imagens/img_bg.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    content: '';
+    position: absolute;
+    inset: 0;
+    opacity: 0.1;
+}
+
+.conteudo{
+    isolation: isolate;
+}
 
 
 p, h1{
@@ -78,6 +93,7 @@ table {
     text-align: center;
     width: 80vw;
 }
+
 
 footer {
     text-align: center;
