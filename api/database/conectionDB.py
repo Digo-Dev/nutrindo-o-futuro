@@ -7,5 +7,5 @@ def conectar():
         print("Conected")
         return True
     else:
-        print("Nã foi possivel conectar")
+        print("Não foi possivel conectar")
         return False
