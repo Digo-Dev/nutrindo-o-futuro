@@ -98,3 +98,7 @@ table {
 footer {
     text-align: center;
 }
+
+form input, button{
+    color: black;
+}

@@ -24,7 +24,7 @@
                 <li><a href="form_produto.html">Saída</a></li>
                 <li><a href="{{ url_for('produto.listar_produto') }}">Estoque</a></li>
                 <li><a href="{{ url_for('produto.form_produto') }}">Cadastro</a></li>
-                <li><a href="sair">Sair</a></li>
+                <li><a href="{{ url_for('logout.logout') }}">Logout</a></li>
             </ul>
         </nav>
     </header>

@@ -1,18 +1,23 @@
 from flask import render_template, Blueprint, request, redirect, flash
-from database.conectionDB import conectar, conexao
+from databases.conectionDB import conectar, conexao
 
+
+# Declaração da blueprint "Login"
 login_route = Blueprint('login', __name__)
 
+# Rotas da blueprint "login" - Rota principal
 @login_route.route('/', methods=['GET','POST'])
 def login():
     return render_template('login.html')
 
+# Rota responsavel por chamar o metodo que recupera o 
+# login e senha digitados na pagina de login e buscar no
+# banco de dados o osuário e senha
 @login_route.route('/autenticar', methods=['POST'])
 def autenticar():
     login = request.form.get('usuario')
     senha = request.form.get('senha')
 
-    global logado
     conectar()
     cont = 0
     if conexao.is_connected():
@@ -30,7 +35,7 @@ def autenticar():
                 return redirect('/home')
 
             if cont >= len(usuariosBD):
-                flash('USUARIO INVALIDO')
+                flash('Usuário ou senha inválidos!')
                 return redirect('/')
     else:
         return redirect('/')
