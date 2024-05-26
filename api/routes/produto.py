@@ -35,7 +35,7 @@ def inserir_produto():
     Produto = request.form.get("Produto")
     Unidade = request.form.get("Unidade")
     Peso = request.form.get("Peso")
-    Quantidade = request.form.get("Quantidade")
+    Quantidade = request.form.get("Qtd")
     Lote = request.form.get("Lote")
     Validade = request.form.get("Validade")
 
