@@ -23,8 +23,6 @@ def listar_produto():
         return render_template('lista_produtos.html', produtos=produtosBD)
     else:
         return "Server offline"
-
-    return redirect('/')
     
 #Renderiza o formulario para criar um novo produto.
 @produto_route.route('/new') 
@@ -41,37 +39,95 @@ def inserir_produto():
     Lote = request.form.get("Lote")
     Validade = request.form.get("Validade")
 
-    novo_produto = f"insert into produtos values (default,'{Produto}','{Unidade}','{Peso}','{Quantidade}','{Lote}','{Validade}')"
+    sql = f"insert into produtos values (default,'{Produto}','{Unidade}','{Peso}','{Quantidade}','{Lote}','{Validade}')"
     
     conectar()
 
-    if conexao.is_connected():
+    try:
+        conexao.is_connected()
         cursor = conexao.cursor()
-        cursor.execute(novo_produto)
+        cursor.execute(sql)
         (cursor.rowcount, "registros na tabela produto")
+
+        cursor.execute('select * from produtos;')
+        produtosBD = cursor.fetchall()
+        produtosBD = list(produtosBD)
+        cursor.close()
+        return redirect('/produto')
+    except:
+        #modal informando que não foi possivel
+        return redirect('/produto')
     
-    
-
-
-"""Obter os detalhes de um produto."""
-@produto_route.route('/<int:id_produto>')
-def detalhe_produto(id_produto):
-    return render_template('detalhe_produto.html')
-
-"""Renderiza um formulario para editar um produto."""
-@produto_route.route('/<int:id_produto>/edit')
-def editar_produto(id_produto):
-    return render_template('form_edit_produto.html')
-
-"""atualizar os dados de um produto."""
-@produto_route.route('/<int:id_produto>/update',methods=['PUT'])
-def atualizar_produto(id_produto):
-    pass
-
-"""Apaga o registro de um produto do servidor."""
-@produto_route.route('/<int:produto_id>/delete',methods=['DELETE'])
+#Apaga o registro de um produto do servidor (Delete).
+@produto_route.route('/<int:produto_id>/delete')
 def deletar_produto(produto_id):
-    global PRODUTOS
-    PRODUTOS = [p for p in PRODUTOS if p['id'] != produto_id]
+    id = produto_id
+    sql = f"delete from produtos where id = '{id}';"
+    
+    try:
+        conexao.is_connected()
+        conectar()
+        cursor = conexao.cursor()
+        cursor.execute(sql)
+        conexao.commit()    
+        print(cursor.rowcount, "Registro(s) apagado(s)")
+        
+        cursor.execute('select * from produtos;')
+        produtosBD = cursor.fetchall()
+        produtosBD = list(produtosBD)
+        cursor.close()
+        return redirect('/produto')
+    except:
+        #modal informando que não foi possivel
+        return redirect('/produto')
 
-    return {'deleted':'ok'}
+
+#Renderiza o formulario para atualizar.
+@produto_route.route('/<int:produto_id>/update', methods=['GET','POST']) 
+def form_update_produto(produto_id):
+    id = produto_id
+    sql = f'select * from produtos where id = "{id}";'
+
+    conectar()
+    conexao.is_connected()
+    cursor = conexao.cursor()
+    cursor.execute(sql)
+    produto = cursor.fetchone()
+    produto = list(produto)
+    print(produto)
+    return render_template('form_update_produto.html', produto = produto)
+
+
+#atualizar os dados de um produto.
+@produto_route.route('/update', methods=['GET','POST'])
+def update_produto():
+    id = request.form.get("id")
+    Produto = request.form.get("Produto")
+    Unidade = request.form.get("Unidade")
+    Peso = request.form.get("Peso")
+    Quantidade = request.form.get("Qtd")
+    Lote = request.form.get("Lote")
+    Validade = request.form.get("Validade")
+    sql = f"update produtos set Produto='{Produto}', Unidade='{Unidade}', Peso={Peso}, Qtd='{Quantidade}', Lote='{Lote}', Validade='{Validade}' where id = '{id}';"
+    
+    try:
+        conectar()
+        conexao.is_connected()
+        cursor = conexao.cursor()
+        print(sql)
+        cursor.execute(sql)
+        conexao.commit()    
+        print(cursor.rowcount, "Registro(s) editados(s)")
+        cursor.execute('select * from produtos;')
+        produtosBD = cursor.fetchall()
+        produtosBD = list(produtosBD)
+        cursor.close()
+        return redirect('/produto')
+    except:
+        #modal informando que não foi possivel
+        return redirect('/produto')
+  
+    
+
+
+

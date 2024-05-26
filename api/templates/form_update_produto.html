@@ -1,0 +1,40 @@
+{% extends 'index.html' %}
+    {% block conteudo %}
+    <h1>Atualizar produto</h1>
+
+    <form class="conteudo" action="{{ url_for('produto.update_produto') }}" method="POST">
+        <div class="mb-3">
+            <label class="form-label">id</label>
+            <input type='hidden' class="form-control" name="id" value="{{produto[0]}}">
+        </div>
+        
+        <div class="mb-3">
+            <label class="form-label">Produto</label>
+        <input type='text' class="form-control" name="Produto" value="{{produto[1]}}">
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Unidade</label>
+            <input type='text' class="form-control" name="Unidade" value="{{produto[2]}}">
+    
+        <div class="mb-3">
+            <label class="form-label">Qtd</label>
+            <input type="text" class="form-control" name="Qtd" value="{{produto[3]}}">
+        </div>
+    
+        <div class="mb-3">
+            <label class="form-label">Peso(KG)</label>
+            <input type="text" class="form-control" name="Peso" value="{{ produto[4]}}">
+        </div>
+    
+        <div class="mb-3">
+            <label class="form-label">Lote:</label>
+            <input type='text' class="form-control" name="Lote" value="{{ produto[5]}}">
+        </div>
+            <label class="form-label">Validade Lote</label>
+            <input type="date" class="form-control" name="Validade" value="{{ produto[6]}}">
+        <p class="buttons">
+            <button type="submit">Atualizar</button>
+            <button type="button">Voltar/Cancelar</button>
+        </p>
+    </form>
+{% endblock %}
